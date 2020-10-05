@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TCA_ListBugApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: Store(
+                    initialState: AppState(),
+                    reducer: Reducer.appReducer.debug(),
+                    environment: ()
+                )
+            )
+            .frame(minWidth: 300, minHeight: 300)
         }
     }
 }
